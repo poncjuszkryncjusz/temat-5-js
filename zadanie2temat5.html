@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="randomDiv">
+    </div>
+    <form id='formOne'>
+        Add number from text field:
+        <input type="number" id='lastNumber'>
+        <button type='button' onclick="addNumberAtTheEnd()">Add the end</button>
+        <button type="button" onclick="addNumberAtTheBegining()">Add the beginning</button>
+        <button type="button" onclick="deleteLastValue()">Delete last value</button>
+        <button type="button" onclick="deleteFirstValue()">Delete first value</button>
+        <button type='button' onclick='deleteIndicatedIndex()'>Delete indicated index</button>
+        <button type="button" onclick="deleteIndicatedValue()">Delate indicated value</button>
+        <button type="button" onclick="addValueInRandomPlace()">Add value in random place</button>
+        <button type="button" onclick="reverseArray()">Click for reverse array</button>
+        <button type="button" onclick="sortElements()">Click for sort of elements in array</button>
+    </form>
+    <script>
+        const ar = [];
+        for (let i = 0; i < 10; i++) {
+            ar.push(Math.floor(Math.random() * 20) + 1);
+        }
+        console.log(ar);
+        document.getElementById('randomDiv').textContent = ar.join(', ');
+        const lastNumber = document.getElementById('lastNumber');
+
+        function addNumberAtTheEnd() {
+            if (lastNumber.value) {
+                ar.push(parseInt(lastNumber.value));
+                updateDiv();
+            }
+        }
+
+        function addNumberAtTheBegining() {
+            if (lastNumber.value) {
+                ar.unshift(parseInt(lastNumber.value));
+                updateDiv();
+            }
+        }
+
+        function deleteLastValue() {
+            if (ar.length) {
+                ar.pop();
+                updateDiv();
+            }
+        }
+
+        function deleteFirstValue() {
+            if (ar.length) {
+                ar.shift();
+                updateDiv();
+            }
+        }
+
+        function deleteIndicatedIndex() {
+            if (ar.length && ar.length > lastNumber.value) {
+                ar.splice(lastNumber.value, 1);
+                updateDiv();
+            }
+        }
+
+        function deleteIndicatedValue() {
+            const index = ar.indexOf(parseInt(lastNumber.value));
+            if (ar.length && index !== -1) {
+                ar.splice(index, 1)
+                updateDiv();
+            }
+        }
+
+        function addValueInRandomPlace() {
+            const randomIndex = Math.floor(Math.random() * ar.length);
+            console.log(randomIndex);
+            ar.splice(randomIndex, 0, parseInt(lastNumber.value));
+            updateDiv();
+        }
+
+        function updateDiv() {
+            document.getElementById('randomDiv').textContent = ar.join(', ');
+            console.log(ar);
+        }
+
+        function reverseArray() {
+            ar.reverse();
+            updateDiv();
+        }
+
+        function sortElements() {
+            ar.sort(function(a, b) {
+                return a - b
+            });
+            updateDiv();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .parzysta {
+            font-weight: bold;
+        }
+        
+        .nieparzysta {
+            font-style: italic;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <ul>
+        <li>Styczeń</li>
+        <li>Luty</li>
+        <li>Marzec</li>
+        <li>Kwiecień</li>
+        <li>Maj</li>
+        <li>Czerwiec</li>
+        <li>Lipiec</li>
+        <li>Sierpień</li>
+        <li>Wrzesień</li>
+        <li>Październiik</li>
+        <li>Listopad</li>
+        <li>Grudzień</li>
+
+        <button id="parzyste" onclick="parzysteUkryj()">ukryj parzyste</button>
+        <button id="nieparzyste" onclick="nieparzysteUkryj()">ukryj nieparzyste</button>
+        <button id="wszystkie" onclick="odslonWszystkie()">odsłoń wszystkie</button>
+
+
+    </ul>
+
+    <script>
+        let ar = document.getElementsByTagName("li");
+        const colors = ["red", "green", "blue", "orange"];
+
+        for (let i = 0; i < ar.length; i++) {
+            ar[i].id = ar[i].textContent;
+            if (i % 2 == 0) {
+                ar[i].className = "nieparzysta"
+            } else {
+                ar[i].className = "parzysta"
+
+            }
+            ar[i].title = ar[i].textContent.length;
+
+            ar[i].textContent += " 2019";
+            let colorsRandom = Math.floor(Math.random() * 4);
+            ar[i].style.color = colors[colorsRandom];
+
+
+        }
+        const daysNumber = setNumberDay(monthName.textContent);
+        element.setAttribute("data-days", daysNumber);
+
+        function setNumberDay(monthName) {
+            switch (monthName) {
+                case 'styczeń':
+                case 'marzec':
+                case 'maj':
+                case 'lipiec':
+                case 'sierpień':
+                case 'październik':
+                case 'grudzień':
+                    return 31;
+                case 'luty':
+                    return 28;
+                case 'kwiecień':
+                case 'czerwiec':
+                case 'listopad':
+                    return 30;
+                case 'luty':
+                    return 28;
+            }
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
